@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../../layouts/Main";
 import Courses from "../../Pages/Courses/Courses";
+import Error from "../../Pages/Error/Error";
 import TopicDetails from "../../Pages/TopicDetails/TopicDetails";
 import Topics from "../../Pages/Topics/Topics";
 
@@ -22,5 +23,6 @@ export const routes = createBrowserRouter([
                 element: <TopicDetails></TopicDetails>
             }
         ]
-    }
+    },
+    {path: '*', element: <Error></Error>}
 ])
