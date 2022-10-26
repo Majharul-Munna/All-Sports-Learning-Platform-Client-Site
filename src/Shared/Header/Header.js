@@ -1,9 +1,12 @@
 import React from 'react';
+import { useContext } from 'react';
 import { Nav } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { AuthContext } from '../../contexts/Authprovider/Authprovider';
 import logo from '../../logo/learn-with-EX-logo.jpg';
 
 const Header = () => {
+    const { user } = useContext(AuthContext);
     return (
         <div>
             <Nav className="navbar bg-light">
@@ -16,6 +19,8 @@ const Header = () => {
                             <Link className='mx-3' to="/courses">Courses</Link>
                             <Link className='mx-3' to="/faq">FAQ</Link>
                             <Link className='mx-3' to="/blog" >Blog</Link>
+                            <Link className='mx-3 px-2 text-white rounded-3xl bg-orange-500' to="/login" >LogIn</Link>
+                            <p>{user?.displayName}</p>
                         </Nav>
                     </div>
 

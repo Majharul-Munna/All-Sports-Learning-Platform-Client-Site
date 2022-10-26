@@ -5,6 +5,8 @@ import Courses from "../../Pages/Courses/Courses";
 import Error from "../../Pages/Error/Error";
 import FAQ from "../../Pages/FAQ/FAQ";
 import Home from "../../Pages/Home/Home";
+import LogIn from "../../Pages/LogIn/LogIn";
+import SignIn from "../../Pages/SignIn/SignIn";
 import TopicDetails from "../../Pages/TopicDetails/TopicDetails";
 import Topics from "../../Pages/Topics/Topics";
 
@@ -29,8 +31,12 @@ export const routes = createBrowserRouter([
                 element: <FAQ></FAQ>
             },
             {
-                path: "/topic/:id",
-                element: <Topics></Topics>
+                path: "/login",
+                element: <LogIn></LogIn>
+            },
+            {
+                path: "/signin",
+                element: <SignIn></SignIn>
             },
             {
                 path: '/blog',

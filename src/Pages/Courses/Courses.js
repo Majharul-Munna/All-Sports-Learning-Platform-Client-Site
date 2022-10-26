@@ -25,7 +25,7 @@ const Courses = () => {
                                 topics.map(topic => <div key={topic.id}>
                                     <div className=''>
                                         <div className="card w-4/5 bg-base-100 shadow-xl">
-                                            <figure><img className=' h-40 w-full' src={topic.img} alt="" /></figure>
+                                            <figure><img className=' h-40 w-full rounded-md' src={topic.img} alt="" /></figure>
                                             <div className="card-body">
                                                 <h2 className="">{topic.name}</h2>
                                                 <p>{topic.des}</p>
