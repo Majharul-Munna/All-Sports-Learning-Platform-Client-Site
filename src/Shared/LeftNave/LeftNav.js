@@ -19,7 +19,7 @@ const LeftNav = () => {
             <div>
                 {
                     topics.map(topic => <p key={topic.id}>
-                        <Link to={`/topic/detail/${topic.id}`}>{topic.name}</Link>
+                        <Link to={`/detail/${topic.id}`}>{topic.name}</Link>
                     </p>)
                 }
             </div>
