@@ -1,17 +1,24 @@
 import React from 'react';
+import { useState } from 'react';
 import { useContext } from 'react';
 import { Nav } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../contexts/Authprovider/Authprovider';
 import logo from '../../logo/learn-with-EX-logo.jpg';
 
+
 const Header = () => {
     const { user, logOut } = useContext(AuthContext);
 
     const handelLogOut = () => {
         logOut()
-        .then( () => {})
-        .catch( error => console.error(error))
+            .then(() => { })
+            .catch(error => console.error(error))
+    }
+
+    let [changeText, setChangeText] = useState(true);
+    const handleChange = () => {
+        setChangeText(!changeText);
     }
 
 
@@ -29,10 +36,19 @@ const Header = () => {
                             <Link className='mx-3' to="/blog" >Blog</Link>
 
                             {
-                                user?.uid
+                                changeText
                                 ?
+                                <button onClick={() => handleChange()}><Link className='mx-3 px-2 text-black rounded-3xl bg-blue-300' >Light</Link></button>
+                                :
+                                <button onClick={() => handleChange()}><Link className='mx-3 px-2 text-white rounded-3xl bg-gray-700' >Dark</Link></button>
+                            }
+
+
+                            {
+                                user?.uid
+                                    ?
                                     <>
-                                    <Link onClick={handelLogOut} className='mx-3 px-2 text-white rounded-3xl bg-orange-500' to="" >LogOut</Link>
+                                        <Link onClick={handelLogOut} className='mx-3 px-2 text-white rounded-3xl bg-orange-500' to="" >LogOut</Link>
                                         <p>{user?.displayName}</p>
                                         <div>
                                             {user?.photoURL ? <img className="h-7 w-7 ml-2 rounded-full" src={user.photoURL} alt={user.displayName} ></img> : <p></p>}
@@ -49,7 +65,7 @@ const Header = () => {
 
                 </div>
             </Nav>
-        </div>
+        </div >
     );
 };
 
