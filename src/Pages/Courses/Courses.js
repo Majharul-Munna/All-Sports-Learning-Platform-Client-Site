@@ -9,10 +9,6 @@ const Courses = () => {
 
     return (
         <div>
-
-
-
-
             <Container>
                 <Row>
                     <Col lg="2">
