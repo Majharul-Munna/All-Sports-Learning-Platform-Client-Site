@@ -34,6 +34,7 @@ const LogIn = () => {
             })
             .catch(error => console.error(error))
     }
+
     const handleGithubSignIn = () => {
         providerLogin(githubProvider)
             .then(result => {
