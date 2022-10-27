@@ -7,7 +7,7 @@ const LeftNav = () => {
     const [topics, setTopics] = useState([]);
 
     useEffect( () =>{
-        fetch('http://localhost:5000/courses')
+        fetch('https://ex-surver-majharul-munna.vercel.app/courses')
         .then(res => res.json())
         .then(data => setTopics(data));
 

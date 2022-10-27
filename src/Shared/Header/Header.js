@@ -48,7 +48,7 @@ const Header = () => {
                                 user?.uid
                                     ?
                                     <>
-                                        <Link onClick={handelLogOut} className='mx-3 px-2 text-white rounded-3xl bg-orange-500' to="" >LogOut</Link>
+                                        <Link onClick={handelLogOut} className='mx-3 px-2 text-black rounded-3xl bg-blue-300' to="" >LogOut</Link>
                                         <p>{user?.displayName}</p>
                                         <div>
                                             {user?.photoURL ? <img className="h-7 w-7 ml-2 rounded-full" src={user.photoURL} alt={user.displayName} ></img> : <p></p>}

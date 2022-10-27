@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
+import Pdfg from '../Pdf/Pdf';
 
 const TopicDetails = () => {
     const course = useLoaderData();
@@ -15,6 +16,9 @@ const TopicDetails = () => {
                             <Link to={`/detail/${course.id}`}>
                                 <button className="btn btn-primary">Get Access</button>
                             </Link>
+                            <div>
+                                <Pdfg></Pdfg>
+                            </div>
                         </div>
                     </div>
                 </div>

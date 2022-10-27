@@ -1,19 +1,20 @@
 import React from 'react';
 import { useContext } from 'react';
+import { Link } from 'react-router-dom';
 import { AuthContext } from '../../contexts/Authprovider/Authprovider';
 
 const Register = () => {
 
     const {createUser} = useContext(AuthContext);
 
-    const handelSubmit = event => {
+    const handleSubmit = event => {
         event.preventDefault();
         const form = event.target;
-        const name =form.name.value;
-        const photo =form.photourl.value;
-        const email =form.email.value;
-        const password =form.password.value;
-        console.log(name,password, photo, email );
+        const name = form.name.value;
+        const photoURL = form.photourl.value;
+        const email = form.email.value;
+        const password = form.password.value;
+        console.log(name,photoURL, email, password);
 
         createUser(email, password)
         .then( result => {
@@ -21,7 +22,7 @@ const Register = () => {
             console.log(user);
             form.reset();
         })
-        .catch(e => console.error(e));
+        .catch( e => console.error(e));
     }
 
     return (
@@ -32,7 +33,7 @@ const Register = () => {
                         Register an account!!
                     </h2>
                 </div>
-                <form onSubmit={handelSubmit} className="mt-8 space-y-6" action="#" method="POST">
+                <form onSubmit={handleSubmit} className="mt-8 space-y-6" action="#" method="POST">
                     <input type="hidden" name="remember" defaultValue="true" />
                     <div className="-space-y-px rounded-md shadow-sm">
                         <div>
@@ -73,6 +74,12 @@ const Register = () => {
                             />
                         </div>
                     </div>
+
+                    <div className="text-sm">
+                            <Link to='/login' href="#" className="font-medium text-orange-600 hover:text-orange-500">
+                                Log In here!!
+                            </Link>
+                        </div>
 
                     <div>
                         <button

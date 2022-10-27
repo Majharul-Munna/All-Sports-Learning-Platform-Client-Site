@@ -22,7 +22,7 @@ export const routes = createBrowserRouter([
             {
                 path: '/courses',
                 loader: async () =>{
-                    return fetch('http://localhost:5000/courses');
+                    return fetch('https://ex-surver-majharul-munna.vercel.app/courses');
                 },
                 element: <Courses></Courses>
             },
@@ -46,7 +46,7 @@ export const routes = createBrowserRouter([
                 path: "/detail/:id",
                 loader: ({params}) =>{
                     console.log(params.id);
-                    return fetch(`http://localhost:5000/details/${params.id}`)
+                    return fetch(`https://ex-surver-majharul-munna.vercel.app/details/${params.id}`)
                 },
                 element:<PrivateRout> <TopicDetails></TopicDetails> </PrivateRout>
             }
