@@ -1,6 +1,29 @@
 import React from 'react';
+import { useContext } from 'react';
+import { AuthContext } from '../../contexts/Authprovider/Authprovider';
 
-const SignIn = () => {
+const Register = () => {
+
+    const {createUser} = useContext(AuthContext);
+
+    const handelSubmit = event => {
+        event.preventDefault();
+        const form = event.target;
+        const name =form.name.value;
+        const photo =form.photourl.value;
+        const email =form.email.value;
+        const password =form.password.value;
+        console.log(name,password, photo, email );
+
+        createUser(email, password)
+        .then( result => {
+            const user = result.user;
+            console.log(user);
+            form.reset();
+        })
+        .catch(e => console.error(e));
+    }
+
     return (
         <div className="flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
             <div className="w-full max-w-md space-y-8">
@@ -9,7 +32,7 @@ const SignIn = () => {
                         Register an account!!
                     </h2>
                 </div>
-                <form className="mt-8 space-y-6" action="#" method="POST">
+                <form onSubmit={handelSubmit} className="mt-8 space-y-6" action="#" method="POST">
                     <input type="hidden" name="remember" defaultValue="true" />
                     <div className="-space-y-px rounded-md shadow-sm">
                         <div>
@@ -23,7 +46,7 @@ const SignIn = () => {
                         </div>
                         <div>
                             <input
-                                name="photo-url"
+                                name="photourl"
                                 type="text"
                                 required
                                 className="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-indigo-500 focus:outline-none focus:ring-indigo-500 sm:text-sm"
@@ -64,4 +87,4 @@ const SignIn = () => {
     );
 };
 
-export default SignIn;<h2>Sign In here</h2>
+export default Register;

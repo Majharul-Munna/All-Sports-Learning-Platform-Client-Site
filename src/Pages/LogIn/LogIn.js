@@ -1,4 +1,4 @@
-import { GoogleAuthProvider } from 'firebase/auth';
+import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 import React from 'react';
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
@@ -6,15 +6,38 @@ import { AuthContext } from '../../contexts/Authprovider/Authprovider';
 
 const LogIn = () => {
 
+    const { signIn } = useContext(AuthContext);
+
+    const handleSubmit = event => {
+        event.preventDefault();
+        const form = event.target;
+        const email = form.email.value;
+        const password = form.password.value;
+        signIn(email, password)
+            .then(result => {
+                const user = result.user;
+                // console.log(user);
+                form.reset();
+            })
+            .catch(e => console.error(e));
+    }
+
     const { providerLogin } = useContext(AuthContext);
 
     const googleProvider = new GoogleAuthProvider()
+    const githubProvider = new GithubAuthProvider()
 
     const handleGoogleSignIn = () => {
         providerLogin(googleProvider)
             .then(result => {
                 const user = result.user;
-                console.log(user);
+            })
+            .catch(error => console.error(error))
+    }
+    const handleGithubSignIn = () => {
+        providerLogin(githubProvider)
+            .then(result => {
+                const user = result.user;
             })
             .catch(error => console.error(error))
     }
@@ -28,7 +51,7 @@ const LogIn = () => {
                         LogIn in to your account!!
                     </h2>
                 </div>
-                <form className="mt-8 space-y-6" action="#" method="POST">
+                <form onSubmit={handleSubmit} className="mt-8 space-y-6" action="#" method="POST">
                     <input type="hidden" name="remember" defaultValue="true" />
                     <div className="-space-y-px rounded-md shadow-sm">
                         <div>
@@ -54,7 +77,7 @@ const LogIn = () => {
 
                     <div className="flex items-center justify-between">
                         <div className="text-sm">
-                            <Link to='/signin' className="font-medium text-orange-600 hover:text-orange-500">
+                            <Link to='/register' className="font-medium text-orange-600 hover:text-orange-500">
                                 Register if you haven't!!
                             </Link>
                         </div>
@@ -81,6 +104,7 @@ const LogIn = () => {
                         LogIn with GOOGLE
                     </button>
                     <button
+                        onClick={handleGithubSignIn}
                         type="submit"
                         className="group relative flex w-full justify-center rounded-md border border-transparent bg-orange-600 py-2 px-4 text-sm font-medium text-white hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">
                         LogIn with GitHub

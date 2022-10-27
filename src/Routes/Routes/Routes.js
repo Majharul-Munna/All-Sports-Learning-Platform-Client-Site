@@ -6,9 +6,8 @@ import Error from "../../Pages/Error/Error";
 import FAQ from "../../Pages/FAQ/FAQ";
 import Home from "../../Pages/Home/Home";
 import LogIn from "../../Pages/LogIn/LogIn";
-import SignIn from "../../Pages/SignIn/SignIn";
+import Register from "../../Pages/Register/Register";
 import TopicDetails from "../../Pages/TopicDetails/TopicDetails";
-import Topics from "../../Pages/Topics/Topics";
 
 export const routes = createBrowserRouter([
     {
@@ -35,8 +34,8 @@ export const routes = createBrowserRouter([
                 element: <LogIn></LogIn>
             },
             {
-                path: "/signin",
-                element: <SignIn></SignIn>
+                path: "/register",
+                element: <Register></Register>
             },
             {
                 path: '/blog',
